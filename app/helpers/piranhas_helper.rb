@@ -1,0 +1,2 @@
+module PiranhasHelper
+end

@@ -1,0 +1,10 @@
+<div class= "genrebox" >
+<!-- ジャンルのform_for部分 -->
+  <%= form_for @genre,url:genres_path  do |f| %>
+
+    <p><h4>ジャンル</h4></p>
+    <%= f.text_field :name %>
+    <%= f.submit '登録' %>
+
+  <% end %>
+</div>

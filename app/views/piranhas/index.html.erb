@@ -1,0 +1,18 @@
+<h3>
+
+<%= form_for @piranha,url:piranhas_path  do |f| %>
+
+    画像<br>
+    <p><%= f.attachment_field :image %></p>
+	タイトル<br>
+	<p><%= f.text_field :title %></p>
+	ジャンル<br>
+	<p><%= f.collection_select(:genre_id, Genre.all, :id, :name, {promot: ""} ) %></p>
+	内容<br>
+	 <p><%= f.text_area :body %></p>
+	 <p><%= f.submit '投稿' %></p>
+
+	<% end %>
+</div>
+
+</h3>
