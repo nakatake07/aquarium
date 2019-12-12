@@ -1,6 +1,22 @@
-<h3>
 
-<%= form_for @piranha,url:piranhas_path  do |f| %>
+
+<% if @piranha.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @piranha.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="container">
+      <div class="row">
+          <div class="col-lg-3"> 
+<h4>
+<%= form_for(@piranha) do |f| %>
 
     画像<br>
     <p><%= f.attachment_field :image %></p>
@@ -14,5 +30,23 @@
 
 	<% end %>
 </div>
-
 </h3>
+</div>
+
+
+      <h3>All Items</h3>
+         <% @piranhas.each do |piranha| %>
+            <div class="col-lg-3">
+              <ul class="list-group">
+                <li class="image list-group-item">
+                   <%= attachment_image_tag piranha, :image, style: "width: 230px; height: 230px;", fallback: "no_image.png" %>
+                </li>
+                <li class="status list-group-item"><%= piranha.title %></li>
+                <li class="status list-group-item"><%= piranha.genre.name %></li>
+                <li class="status list-group-item"><%= piranha.body %></li>
+                <li class="status list-group-item"><%= link_to "削除", piranha_path(piranha), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
+                </li>
+              </ul>
+          </div>
+      <% end %>
+    </div>
