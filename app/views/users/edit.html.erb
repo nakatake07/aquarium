@@ -1,0 +1,42 @@
+<div>
+<% if @user.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <p><%= @user.errors.count %>errors prohibited this obj from being saved</p>
+           <ul>
+              <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+           </ul>
+          </div>
+<% end %>
+</div>
+
+
+
+
+
+<div class="editbody">
+
+
+<h2>ユーザー情報編集</h2>
+
+<%= form_for(@user, url:user_path) do |f| %>
+
+	<div>
+       <%= f.label :ユーザー名 %><br />
+       <%= f.text_field :name, autofocus: true, autocomplete: "ユーザー名" %>
+ 　 </div>
+
+
+    <div class="form">
+      <%= f.label :Eメール %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "Eメール"%>
+ 　 </div>
+
+    <div class="actions">
+    <h3><%= f.submit "更新" %></h3>
+    </div>
+
+<% end %>
+
+</div>
