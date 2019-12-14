@@ -26,9 +26,9 @@
     <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-        <li><%= link_to "Home", genres_path, class: "glyphicon glyphicon-home"  %></li>
-        <li><%= link_to "Users", genres_path, class: "glyphicon glyphicon-user" %></li>
-        <li><%= link_to "Books", genres_path,class: "glyphicon glyphicon-book" %></li>
+        <li><%= link_to "Home", top_path, class: "glyphicon glyphicon-home"  %></li>
+        <li><%= link_to "#{current_user.name}さんのマイページ", user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
+        <li><%= link_to "いいね一覧", genres_path,class: "glyphicon glyphicon-thumbs-up" %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path ,method: :delete, class: "glyphicon glyphicon-log-out" %>
       </li>
 
