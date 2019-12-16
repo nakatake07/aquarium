@@ -1,2 +1,30 @@
-<h1>Piranhas#edit</h1>
-<p>Find me in app/views/piranhas/edit.html.erb</p>
+<div>
+<% if @piranha.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <p><%= @piranha.errors.count %>errors prohibited this obj from being saved</p>
+           <ul>
+              <% @piranha.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+           </ul>
+          </div>
+<% end %>
+</div>
+
+
+
+<div class="editbody">
+
+
+    <h2>投稿情報の編集</h2>
+       <%= form_for(@piranha, url:piranha_path) do |f| %>
+
+	   <h3> <p><%= f.text_field :title %></p>
+	    ジャンル<br>
+	    <p><%= f.collection_select(:genre_id, Genre.all, :id, :name, {promot: ""} ) %></p>
+	    内容<br>
+	    <p><%= f.text_area :body %></p>
+	    <p><%= f.submit '編集' %></p>
+</h3>
+	   <% end %>
+</div>

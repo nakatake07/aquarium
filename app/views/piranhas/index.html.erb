@@ -10,6 +10,7 @@
   </div>
 <% end %>
 
+<div class="aquaindex">
 
 
 <div class="container">
@@ -43,10 +44,13 @@
                 </li>
                 <li class="status list-group-item"><%= piranha.title %></li>
                 <li class="status list-group-item"><%= piranha.genre.name %></li>
-                <li class="status list-group-item"><%= piranha.body %></li>
+                <li class="status list-group-item"><%= link_to "詳細", piranha_path(piranha) %></li>
+                <%if current_user == piranha.user || admin_signed_in? %>
                 <li class="status list-group-item"><%= link_to "削除", piranha_path(piranha), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
                 </li>
+                <%end%>
               </ul>
           </div>
       <% end %>
     </div>
+<div>

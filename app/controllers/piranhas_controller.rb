@@ -9,18 +9,23 @@ class PiranhasController < ApplicationController
      @user = current_user
   end
 
+
   def show
-     @piranha = Poranha.find(params[:id])
+      @piranha = Piranha.find(params[:id])
+      @user = User.find(@piranha.user_id)
   end
 
   def edit
+      @piranha = Piranha.find(params[:id])
+       if @piranha.user_id != current_user.id
+        redirect_to piranha_path
+      end
   end
 
    def create
-
       @piranha = Piranha.new(piranha_params)
       @piranha.user_id = current_user.id
-      if @piranha.save
+     if @piranha.save
         flash[:create] = "投稿されました"
         redirect_to piranhas_path
      else
@@ -30,9 +35,21 @@ class PiranhasController < ApplicationController
      end
    end
 
+   def update
+       @piranha = Piranha.find(params[:id])
+      if @piranha.update(piranha_params)
+      flash[:notice] = 'successfully'
+      redirect_to piranha_path(@piranha)
+    else
+    render 'edit'
+    end
+   end
+
+
+
   def destroy
-        piranha = Piranha.find(params[:id])
-        piranha.destroy
+        @piranha = Piranha.find(params[:id])
+        @piranha.destroy
         redirect_to piranhas_path
   end
 

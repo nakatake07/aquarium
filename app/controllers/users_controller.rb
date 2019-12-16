@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+    def index
+    @users = User.page(params[:page])
+    end
+
 
 	def show
         @user = User.find(params[:id])
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
     def destroy
 		@user = user.find(params[:id])
         @user.destroy
-        redirect_to top_path
+        redirect_to users_path
 	end
 
 

@@ -1,2 +1,55 @@
-<h1>Buyers#index</h1>
-<p>Find me in app/views/buyers/index.html.erb</p>
+<% if @buyer.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @buyer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="container">
+      <div class="row">
+          <div class="col-lg-3"> 
+<h4>
+<%= form_for(@buyer) do |f| %>
+
+    画像<br>
+    <p><%= f.attachment_field :image %></p>
+	タイトル<br>
+	<p><%= f.text_field :title %></p>
+	ジャンル<br>
+	<p><%= f.collection_select(:genre_id, Genre.all, :id, :name, {promot: ""} ) %></p>
+	内容<br>
+	 <p><%= f.text_area :body %></p>
+
+	 <p><%= f.submit '投稿' %></p>
+
+	<% end %>
+</div>
+</h3>
+</div>
+
+
+      <h3>All Items</h3>
+      <% if @buyers.present? %>
+         <% @buyers.each do |buyer| %>
+            <div class="col-lg-3">
+              <ul class="list-group">
+                <li class="image list-group-item">
+                   <%= attachment_image_tag buyer, :image, style: "width: 230px; height: 230px;", fallback: "no_image.png" %>
+                </li>
+                <li class="status list-group-item"><%= buyer.title %></li>
+                <li class="status list-group-item"><%= buyer.genre.name %></li>
+                <li class="status list-group-item"><%= link_to "詳細", buyer_path(buyer) %></li>
+              <%if current_user == piranha.user || admin_signed_in? %>
+                <li class="status list-group-item"><%= link_to "削除", buyer_path(buyer), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
+                </li>
+              <%end%>
+              </ul>
+           </div>
+         <% end %>
+      <% end %>
+    </div>
