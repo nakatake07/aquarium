@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_091200) do
     t.text "body"
     t.string "image_id"
     t.integer "genre_id"
+    t.string "ema"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

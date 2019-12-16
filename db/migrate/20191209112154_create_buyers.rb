@@ -6,6 +6,7 @@ class CreateBuyers < ActiveRecord::Migration[5.2]
         t.text :body
         t.string :image_id
         t.integer :genre_id
+        t.string :email
 
 
 
