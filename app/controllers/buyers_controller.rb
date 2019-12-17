@@ -11,7 +11,7 @@ PER = 12
 
   def show
       @buyer = Buyer.find(params[:id])
-      @user = User.find(@piranha.user_id)
+      @user = User.find(@buyer.user_id)
   end
 
 
@@ -47,7 +47,7 @@ PER = 12
 
 private
 
-    def piranha_params
+    def buyer_params
     	params.require(:buyer).permit(:title, :body, :genre_id, :image, :email)
     end
 

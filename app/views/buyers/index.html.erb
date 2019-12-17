@@ -44,7 +44,7 @@
                 <li class="status list-group-item"><%= buyer.title %></li>
                 <li class="status list-group-item"><%= buyer.genre.name %></li>
                 <li class="status list-group-item"><%= link_to "詳細", buyer_path(buyer) %></li>
-              <%if current_user == piranha.user || admin_signed_in? %>
+              <%if current_user == buyer.user || admin_signed_in? %>
                 <li class="status list-group-item"><%= link_to "削除", buyer_path(buyer), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
                 </li>
               <%end%>
