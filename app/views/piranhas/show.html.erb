@@ -1,41 +1,50 @@
 <div class="contaiber">
 	 <div class="row">
 
-        <!-- 投稿一覧 -->
+        <!-- 投稿 -->
           <div class="col-xs-5">
-
              <p><%= attachment_image_tag @piranha,:image,:fill,500,500,fallback: "no_image.jpg" %></p>
-             <h2><p><%= @piranha.title %></p>
-                <br>
-             	<br>
-             <p><%= @piranha.body %></p>
+               <h2><p><%= @piranha.title %></p>
+              <br>
+              <br>
+               <p><%= @piranha.body %></p>
              <br>
              <br>
-             <%if current_user == @piranha.user%>
+             <%if current_user == @piranha.user || admin_signed_in? %>
               <%= link_to "編集", edit_piranha_path(@piranha.id) %>
 
               <%= link_to "削除", piranha_path(@piranha), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
              </h2>
              <%end%>
-         </div>
-     </div>
-
-
+           </div>
 <!-- コメント欄 -->
-          <div class="row">
-             <div class="col-xs-4">
-
-
-
-             </div>
+          <div class="col-xs-4">
+              <% if flash[:create] %>
+               <p class="success" style="color: green;"><%= flash[:create] %></p>
+              <% end %>
+           <% if flash[:update] %>
+             <p class="success" style="color: green;"><%= flash[:update] %></p>
+           <% end %>
+          <h2>コメント一覧</h2>
+        <div id="comments_area">
+          <%= render partial: "reviews/index", locals: { reviews: @reviews } %>
+        </div>
+      </div>
  
 
 
 <!-- コメント投稿 -->
-          <div class="row">
              <div class="col-xs-3">
-
-
-
+              <% if user_signed_in? %>
+                 <h2>レビュー投稿</h2>
+                  <%= form_with(model: @review, url: reviews_path) do |f| %>
+                  <%= f.hidden_field :piranha_id, value: @piranha.id %>
+                  <div class="new-review-body">内容<br><%= f.text_area :review_body, style: "width: 300px; height: 100px;" %></div>
+                  <div class="new-review-create"><%= f.submit '投稿', class: "btn btn-primary" %></div>
+                 <% end %>
+              <% end %>
              </div>
+     </div>
  </div>
+
+

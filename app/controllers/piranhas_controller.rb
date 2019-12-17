@@ -6,13 +6,15 @@ class PiranhasController < ApplicationController
   def index
     @piranhas = Piranha.page(params[:page]).per(PER)
   	@piranha = Piranha.new
-     @user = current_user
+    @user = current_user
   end
 
 
   def show
       @piranha = Piranha.find(params[:id])
       @user = User.find(@piranha.user_id)
+      @review = @piranha.reviews.build
+      @reviews = @piranha.reviews
   end
 
   def edit

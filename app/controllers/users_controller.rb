@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
     def index
-    @users = User.page(params[:page])
+     if admin_signed_in?
+        @users = User.page(params[:page])
+        else
+        redirect_to top_path
+        end
     end
 
 
@@ -39,7 +43,7 @@ class UsersController < ApplicationController
 
 
     def destroy
-		@user = user.find(params[:id])
+		@user = User.find(params[:id])
         @user.destroy
         redirect_to users_path
 	end

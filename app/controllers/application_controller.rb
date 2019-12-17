@@ -4,7 +4,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
  def after_sign_in_path_for(resource)
       case resource
 	      when User
-	        top_path
+	       top_path
 	      when Admin
 	        top_path
 	  end
