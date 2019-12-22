@@ -1,12 +1,23 @@
 class GenresController < ApplicationController
+
+
   def index
-  	 @genres = Genre.all
-  end
+     if admin_signed_in?
+        @genres = Genre.page(params[:page])
+        else
+        redirect_to top_path
+        end
+    end
+
 
 
 
   def new
-        @genre = Genre.new
+        if admin_signed_in?
+        @genres = Genre.new
+        else
+        redirect_to top_path
+        end
    end
 
 

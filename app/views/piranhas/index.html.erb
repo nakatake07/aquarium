@@ -41,7 +41,7 @@
             <div class="col-lg-3">
               <ul class="list-group">
                 <li class="image list-group-item">
-                   <%= attachment_image_tag piranha, :image, style: "width: 220px; height: 220px;", fallback: "no_image.png" %>
+                   <%= attachment_image_tag piranha, :image, style: "width: 220px; height: 220px;", fallback: "no_image.jpg" %>
                 </li>
                 <li class="status list-group-item"><%= piranha.title %></li>
                 <li class="status list-group-item"><%= piranha.genre.name %></li>
@@ -50,7 +50,7 @@
                 <% if current_user.already_favorited?(piranha) %>
                 <li class="status list-group-item">
                  <div>
-                  <%= link_to destroy_favorites_path(piranha), method: :delete do %>
+                  <%= link_to piranha_favorites_path(piranha), method: :delete do %>
                 <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
                 <%= piranha.favorits.count %> いいね
                 <% end %>
@@ -59,7 +59,7 @@
              <% else %>
              <li class="status list-group-item">
          <div>
-            <%= link_to create_favorites_path(piranha), method: :post do %>
+            <%= link_to piranha_favorites_path(piranha), method: :post do %>
               <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
              <%= piranha.favorits.count %> いいね
              <% end %>

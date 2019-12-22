@@ -37,6 +37,18 @@ PER = 12
      end
    end
 
+   def update
+       @buyer = Buyer.find(params[:id])
+      if @buyer.update(buyer_params)
+      flash[:notice] = 'successfully'
+      redirect_to buyer_path(@buyer)
+    else
+    render 'edit'
+    end
+   end
+
+
+
 
   def destroy
         @buyer = Buyer.find(params[:id])

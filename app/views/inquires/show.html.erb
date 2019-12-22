@@ -1,0 +1,39 @@
+<div class="toiawaeshow">
+
+<h2>問い合わせ詳細</h2>
+<br>
+<br>
+</div>
+
+
+
+<div class="toiawaeshow">
+	<table>
+
+        <tbody>
+
+        	<tr>
+        	    <td>日付:</td>
+        		<td><%= @inquire.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        	</tr>
+        	<tr>
+        		<td>タイトル:</td>
+        		<td><%= @inquire.title %></td>
+        	</tr>
+        	<tr>
+        		<td>メールアドレス:</td>
+        		<td><%= @inquire.mail %></td>
+        	</tr>
+        	<tr>
+        		<td>ユーザー名:</td>
+        		<td><%= @inquire.name %></td>
+        	</tr>
+        	<tr>
+        		<td>詳細</td>
+        	</tr>
+        	<tr>
+        		<h2><td><%= @inquire.body %></td></h2>
+        	</tr>
+        </tbody>
+    </table>
+</div>

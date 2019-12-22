@@ -1,0 +1,19 @@
+ <div class="container">
+      <div class="row">
+
+      <h3>いいね一覧</h3>
+      <br>
+         <% @favorites.each do |favorit| %>
+            <div class="col-lg-3">
+              <ul class="list-group">
+                <li class="image list-group-item">
+                   <%= attachment_image_tag favorit.piranha, :image, style: "width: 230px; height: 230px;", fallback: "no_image.png" %>
+                </li>
+                <li class="status list-group-item"><%= favorit.piranha.title %></li>
+                <li class="status list-group-item"><%= favorit.piranha.genre.name %></li>
+                <li class="status list-group-item"><%= link_to "詳細", piranha_path(favorit.piranha) %></li>
+              <%end%>
+              </ul>
+           </div>
+         </div>
+       </div>

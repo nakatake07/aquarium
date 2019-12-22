@@ -33,13 +33,13 @@
 </div>
 
 
-      <h3>All Items</h3>
+      <h3>募集一覧</h3>
       <% if @buyers.present? %>
          <% @buyers.each do |buyer| %>
             <div class="col-lg-3">
               <ul class="list-group">
                 <li class="image list-group-item">
-                   <%= attachment_image_tag buyer, :image, style: "width: 230px; height: 230px;", fallback: "no_image.png" %>
+                   <%= attachment_image_tag buyer, :image, style: "width: 230px; height: 230px;", fallback: "no_image.jpg" %>
                 </li>
                 <li class="status list-group-item"><%= buyer.title %></li>
                 <li class="status list-group-item"><%= buyer.genre.name %></li>
