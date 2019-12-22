@@ -1,1 +1,32 @@
+<div class="contaiber">
+	 <div class="row">
+
+        <!-- 投稿 -->
+          <div class="col-xs-5">
+             <p><%= attachment_image_tag @buyer,:image,:fill,500,500,fallback: "no_image.jpg" %></p>
+               <h2><p><%= @buyer.title %></p>
+              <br>
+              <br>
+               <p><%= @buyer.body %></p>
+             <br>
+             <br>
+             <%if current_user == @buyer.user || admin_signed_in? %>
+              <%= link_to "編集", edit_buyer_path(@buyer.id) %>
+
+              <%= link_to "削除", buyer_path(@buyer), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
+             </h2>
+             <%end%>
+          </div>
+<!-- コメント欄 -->
+          <div class="col-xs-4">
+              <%= link_to "このユーザーへ連絡する", new_buyerinquire_path(@buyer.id) %>
+      </div>
+ 
+
+
+<!-- コメント投稿 -->
+</div>
+</div>
+
+
 

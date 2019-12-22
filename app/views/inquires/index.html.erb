@@ -1,0 +1,58 @@
+<div class="toiawase">
+
+<h2>問い合わせ一覧</h2>
+<br>
+<br>
+</div>
+
+
+
+<div class="contaiber">
+
+	<div class="row">
+
+		<div class="col-lg-11">
+
+	   		<table class="table table-striped">
+				<thead>
+
+					 <tr>
+						<th>日付</th>
+						<th>ユーザー名</th>
+						<th>メールアドレス</th>
+						<th>件名</th>
+						<th>内容</th>
+					</tr>
+				</thead>
+				<tbody>
+       				<% @inquires.each do |inquire| %>
+       				<tr>
+
+					        <td>
+					        	<%= inquire.created_at.strftime("%Y-%m-%d %H:%M") %>
+					        </td>
+					        <td>
+					        	<%= inquire.name %>
+					        </td>
+					        <td>
+					             <%= inquire.mail %>
+					        </td>
+					        <td>
+					        	 <%= inquire.title %>
+					        </td>
+					        <td>
+					             <%= link_to "詳細", inquire_path(inquire) %>
+					       </td>
+					       <td><%= link_to "削除", inquire_path(inquire), method: :delete, "data-confirm" => "本当に削除しますか？？" %>
+					       </td>
+
+					    </tr>
+                     <% end %>
+
+		       </tbody>
+   			</table>
+   		</div>
+   	  </div>
+   	</div>
+</div>
+

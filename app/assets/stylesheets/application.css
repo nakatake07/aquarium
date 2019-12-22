@@ -17,3 +17,32 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.navbar{
+	margin-bottom:0px;
+}
+* {
+ margin: 0px;
+ padding: 0px;
+}
+
+body{
+	margin: 0;
+	 height: 100%;
+}
+
+#title{
+ margin:0;            /* ←追加 */
+}
+
+ .login{
+ 	margin:0; 
+ 	width: 100%; /* 横幅 */
+ 	height: 1000px;
+ 	padding-top: 200px;
+ 	 background-color: rgba( 0, 0, 0, 0.6);
+ 	text-align: center;
+ 	background-image: url(aqua.jpg);
+ 	background-size: cover;
+    background-position: center;
+ }
+

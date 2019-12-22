@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  def index
+    @favorites = Favorit.all
+  end
+
 	def create
     @favorit = Favorit.create(user_id:current_user.id,  piranha_id: params[:piranha_id])
     #@favorit.save

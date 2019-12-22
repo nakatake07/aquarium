@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 		@reviews = @piranha.reviews
 	    @review.user_id = current_user.id
         if @review.save
-        	flash[:create] = "レビューが追加されました"
+        	flash[:create] = "コメントが追加されました"
             redirect_to piranha_path(@piranha)
         else
         	render "piranha/show"
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 	def update
 		@review = Review.find(params[:id])
 		if @review.update(review_params)
-			flash[:update] = "レビューが更新されました"
+			flash[:update] = "コメントが更新されました"
 			redirect_to piranha_path(@review.piranha)
 	    else
 	    	render :edit

@@ -11,6 +11,7 @@ class User < ApplicationRecord
          has_many :buyers, dependent: :destroy
          has_many :reviews
          has_many :favorits
+         attachment :image
 
          def already_favorited?(piranha)
           self.favorits.exists?(piranha_id: piranha.id)

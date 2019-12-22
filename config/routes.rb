@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'buyerinquires/new'
   devise_for :admins
 
 	 get 'top' => 'tops#top'
@@ -9,12 +10,14 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :leave, :update, :destroy] do
   get 'leave', to: 'users#leave', on: :member
   end
+  resources :inquires, only: [:new, :show, :create, :index, :update, :destroy]
 
   resources :buyers, only: [:new, :create, :index, :show, :edit, :destroy, :update]
-  resources :piranhas, only: [:new, :create, :index, :show, :edit, :destroy, :update]
+  resources :buyerinquires, only: [:new, :create,  :edit, :destroy, :update]
+  resources :piranhas, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
+  resource :favorites, only: [:create, :destroy]
+  end
   resources :genres, only: [:new, :create, :index, :show, :edit, :destroy, :update]
   resources :reviews, only: [:create, :destroy, :edit, :update]
-  post 'favorites/:piranha_id', to:'favorites#create', as: 'create_favorites'
-  delete  'favorites/:piranha_id', to:'favorites#destroy', as:'destroy_favorites'
-
+  get 'favorites' => 'favorites#index'
 end

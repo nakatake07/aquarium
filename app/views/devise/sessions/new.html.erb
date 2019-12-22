@@ -1,4 +1,10 @@
-<h2>ログイン</h2>
+ <body>
+
+
+ <div class="login">
+
+ <h2 id="title">ログイン</h2>
+ <h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -18,9 +24,17 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
+  <span class="sab">
+    <%= f.submit "ログイン", :class => "btn btn-primary btn-md" %>
+    <i class="fa fa-sign-in"></i>
+  </span>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</h3>
+
+</div>
+
+</body>
+
+

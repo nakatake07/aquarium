@@ -10,24 +10,27 @@
   </head>
 
 
-    <header>
-   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<header>
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
       <h4><span style="color:#ffffff;">Bookers</span></h4>
     </div>
-    
+
+
+
     <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
       <ul class="nav navbar-nav">
         <% if admin_signed_in? %>
 
         <li><%= link_to "Home", top_path, class: "glyphicon glyphicon-home"  %></li>
+        <li><%= link_to "問い合わせ一覧", inquires_path %></li>
         <li><%= link_to "ユーザー一覧", users_path, class: "glyphicon glyphicon-user"  %></li>
         <li><%= link_to "ジャンル一覧", genres_path, class: "glyphicon glyphicon-user" %></li>
         <li><%= link_to "ジャンル追加", new_genre_path,class: "glyphicon glyphicon-thumbs-up" %></li>
@@ -35,10 +38,11 @@
       </li>
 
          <% elsif user_signed_in? %>
+         
 
-        <li><%= link_to "home", genres_path, class: "glyphicon glyphicon-home" %></li>
-        <li><%= link_to "いいね一覧", genres_path, class: "glyphicon glyphicon-link" %></li>
-        <li><%= link_to "新規登録", new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
+        <li><%= link_to "home", top_path, class: "glyphicon glyphicon-home" %></li>
+        <li><%= link_to "いいね一覧", favorites_path, class: "glyphicon glyphicon-link" %></li>
+        <li><%= link_to "#{current_user.name}さんのマイページ", user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path ,method: :delete, class: "glyphicon glyphicon-log-out" %></li>
 
            <% else %>
@@ -50,6 +54,6 @@
     </div>
   </div>
 </nav>
-    <%= yield %>
+</header>
 
-
+<%= yield %>
