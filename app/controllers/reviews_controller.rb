@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
 
 	def create
-		#controller/enduuser/cdのdef showから飛んでくる
 	    @review = Review.new(review_params)
 	    @piranha = Piranha.find(@review.piranha_id)
 		@reviews = @piranha.reviews
@@ -17,11 +16,11 @@ class ReviewsController < ApplicationController
 
 
 	def destroy
-#		@review = Review.find_by(cd_id: params[:id], enduser_id: current_endusers_enduser.id)
+
 	    @review = Review.find(params[:id])
-	    #if @review.enduser_id ==current_endusers_enduser.id
+
 		@review.destroy
-		#end
+
 		redirect_to piranha_path(@review.piranha)
 	end
 

@@ -3,11 +3,19 @@ class InquiresController < ApplicationController
 
 
 	def index
-		@inquires = Inquire.all
+		if admin_signed_in?
+          @inquires = Inquire.all
+        else
+        redirect_to top_path
+        end
 	end
 
 	def show
-		@inquire = Inquire.find(params[:id])
+		if admin_signed_in?
+          @inquire = Inquire.find(params[:id])
+        else
+        redirect_to top_path
+        end
 	end
 
 
