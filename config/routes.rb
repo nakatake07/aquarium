@@ -12,11 +12,16 @@ Rails.application.routes.draw do
   end
   resources :inquires, only: [:new, :show, :create, :index, :update, :destroy]
 
-  resources :buyers, only: [:new, :create, :index, :show, :edit, :destroy, :update]
-  resources :buyerinquires, only: [:new, :create,  :edit, :destroy, :update]
-  resources :piranhas, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
-  resource :favorites, only: [:create, :destroy]
+  resources :buyers, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
+  resources :buyerinquires, only: [:new, :create, :update, :destroy]
   end
+
+
+  resources :piranhas, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
+    resource :favorites, only: [:create, :destroy]
+  end
+  get 'search', to: 'piranhas#search'
+
   resources :genres, only: [:new, :create, :index, :show, :edit, :destroy, :update]
   resources :reviews, only: [:create, :destroy, :edit, :update]
   get 'favorites' => 'favorites#index'

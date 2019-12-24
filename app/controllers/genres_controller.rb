@@ -10,15 +10,13 @@ class GenresController < ApplicationController
     end
 
 
-
-
   def new
-        if admin_signed_in?
-        @genres = Genre.new
+     if admin_signed_in?
+        @genre = Genre.new
         else
         redirect_to top_path
         end
-   end
+    end
 
 
   def create

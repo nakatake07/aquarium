@@ -1,7 +1,12 @@
 <% if user_signed_in? || admin_signed_in? %>
 
+
 <div class="top1">
 	<div class="toptext1">
+		<p>アクアリウムが趣味の仲間が集うコミュニティ</p>
+		<p>飼っている生き物の写真を投稿したり</p>
+        <p>里親の募集が出来るサイトです。</p>
+        <p></p>
 	</div>
 </div>
 
@@ -19,7 +24,8 @@
 
 <div class="top4">
 
-	<h1>お問い合わせフォーム</h1>
+	<P class="toptitle1">お問い合わせはこちら</P>
+	
 
 	<%= form_for(@inquire, url:inquires_path) do |f| %>
 

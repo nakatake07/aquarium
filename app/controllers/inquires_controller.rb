@@ -21,6 +21,9 @@ class InquiresController < ApplicationController
 		redirect_to top_path
 	end
 
+	def update
+	end
+
 	def destroy
         inquire = Inquire.find(params[:id])
         inquire.destroy
