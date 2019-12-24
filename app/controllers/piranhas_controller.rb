@@ -1,12 +1,19 @@
 class PiranhasController < ApplicationController
 
-  PER = 12
+
 
 
   def index
     @piranhas = Piranha.page(params[:page]).per(PER)
   	@piranha = Piranha.new
     @user = current_user
+    @q = Piranha.ransack(params[:q])
+    piranhas = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Piranha.search(search_params)
+    @piranhas = @q.result(distinct: true)
   end
 
 
@@ -61,4 +68,9 @@ class PiranhasController < ApplicationController
     def piranha_params
     	params.require(:piranha).permit(:title, :body, :genre_id, :image)
     end
+
+    def search_params
+    params.require(:q).permit!
   end
+
+ end

@@ -12,8 +12,13 @@
                 <li class="status list-group-item"><%= favorit.piranha.title %></li>
                 <li class="status list-group-item"><%= favorit.piranha.genre.name %></li>
                 <li class="status list-group-item"><%= link_to "詳細", piranha_path(favorit.piranha) %></li>
-              <%end%>
               </ul>
            </div>
+           <%end%>
          </div>
        </div>
+
+
+    <div style="text-align:center">
+      <%= paginate @favorites %>
+    </div>

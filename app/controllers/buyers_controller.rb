@@ -1,6 +1,5 @@
 class BuyersController < ApplicationController
 
-PER = 12
 
  def index
     @buyers = Buyer.page(params[:page]).per(PER)

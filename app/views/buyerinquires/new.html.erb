@@ -1,0 +1,21 @@
+<div class="top4">
+
+	<P class="toptitle1">里親送信フォーム</P>
+
+
+	<%= form_for(@inquire, url:buyer_buyerinquires_path) do |f| %>
+
+	<p>名前<br>
+	<%= f.text_field :name %></p>
+
+	<p>メールアドレス<br>
+	<%= f.text_field :mail %></p>
+
+	<p>お問い合わせ内容<br>
+	<%= f.text_area :body %></p>
+
+	<%= f.submit '送信', class: "btn btn-primary", style: "display: block;" "margin: 0 auto;" %>
+
+	<% end %>
+
+</div>
