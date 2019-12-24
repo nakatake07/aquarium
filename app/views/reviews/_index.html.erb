@@ -1,8 +1,8 @@
 <% reviews.each do |r| %>
     <ul class="review-list list-group">
       <li class="review-body list-group-item"><%= r.review_body %></li>
-      <% if user_signed_in? %>
-        <% if r.user == current_user %>
+      <% if user_signed_in? || admin_signed_in? %>
+        <% if r.user == current_user || admin_signed_in? %>
           <div class="text-right">
             <%= link_to "編集", edit_review_path(r.id), class:"btn-sm btn-success" %>
             <%= link_to "削除", review_path(r.id), class:"btn-sm btn-danger destroy", method: :delete, "data-confirm" => "本当に削除しますか？？" %>

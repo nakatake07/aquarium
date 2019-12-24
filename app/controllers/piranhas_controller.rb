@@ -7,21 +7,15 @@ class PiranhasController < ApplicationController
     @piranhas = Piranha.page(params[:page]).per(PER)
   	@piranha = Piranha.new
     @user = current_user
-    @q = Piranha.ransack(params[:q])
-    piranhas = @q.result(distinct: true)
   end
 
-  def search
-    @q = Piranha.search(search_params)
-    @piranhas = @q.result(distinct: true)
-  end
 
 
   def show
       @piranha = Piranha.find(params[:id])
       @user = User.find(@piranha.user_id)
-      @review = @piranha.reviews.build
       @reviews = @piranha.reviews
+      @review = Review.new
   end
 
   def edit

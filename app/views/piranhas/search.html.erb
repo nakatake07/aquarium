@@ -1,24 +1,29 @@
-<div class="cd-index container">
-  <h3>投稿一覧</h3>
-     <% @piranhas.each do |piranha| %>
-          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-              <ul class="list-group">
-                <li class="image list-group-item">
-                  <%= attachment_image_tag piranha, :image, style: "width: 220px; height: 220px;", fallback: "no_image.jpg" %>
-                </li>
-                <li class="status list-group-item"><%= piranha.title %></li>
-                <li class="status list-group-item"><%= piranha.genre.name %></li>
-                <li class="status list-group-item"><%= link_to "詳細", piranha_path(piranha) %></li>
-                <% if user_signed_in? %>
-                <% if current_user.already_favorited?(piranha) %>
-                <li class="status list-group-item">
-                 <div>
-                  <%= link_to piranha_favorites_path(piranha), method: :delete do %>
-                <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
-                <%= piranha.favorits.count %> いいね
-                <% end %>
-                </li>
-              </ul>
-          </div>
+<div class="container maincontents">
+  <h1>検索結果</h1>
+
+  <div class="col-lg-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="piranha-title">C</th>
+          <th class="cd-artist">アーティスト</th>
+          <th class="cd-type">タイプ</th>
+          <th class="status">状況</th>
+        </tr>
+        </thead>
+      <% @piranhas.each do |piranha| %>
+      <tbody>
+        <tr>
+          <td class="cd-title">
+            <%= link_to piranha_path(pirahnha) do %>
+              <%= piranha.title %>
+            <% end %></td>
+          <td class="cd-artist"><%= piranha.body %></td>
+          <td class="cd-type"></td>
+          <td class="status"></td>
+        </tr>
+      </tbody>
       <% end %>
+    </table>
+  </div>
 </div>
