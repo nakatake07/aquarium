@@ -69,9 +69,13 @@ gem "refile-mini_magick"
 gem 'kaminari', '~> 1.1.1'
 gem "pry-byebug"
 gem 'ransack'
+<<<<<<< HEAD
 
 
 
 group :production do
   gem 'mysql2'
 end
+=======
+gem 'rails-i18n'
+>>>>>>> 0bc3a2244fcc434e1fd270a37a3c7bce05854c12
