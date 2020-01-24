@@ -1,24 +1,16 @@
 # AQUARIUM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##サイトの概要
+アクアリウム(熱帯魚などの水生生物)をテーマとした簡易的なSNSサイト
 
-Things you may want to cover:
+##サイトの機能・使い方
+ユーザー側
+・写真の投稿
+・里親募集の投稿
+・里親募集でのユーザー間でのやりとり(アクションメーラー)
+・管理者への問い合わせ
 
-* Ruby version
+管理者側
+・ユーザーの削除
+・投稿の削除
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
